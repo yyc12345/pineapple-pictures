@@ -44,14 +44,14 @@ Settings *Settings::instance()
 
 bool Settings::stayOnTop()
 {
-    return m_qsettings->value("stay_on_top", true).toBool();
+    return m_qsettings->value("stay_on_top", false).toBool();
 }
 
 Settings::DoubleClickBehavior Settings::doubleClickBehavior() const
 {
     QString result = m_qsettings->value("double_click_behavior", "Close").toString();
 
-    return QEnumHelper::fromString<DoubleClickBehavior>(result, DoubleClickBehavior::Close);
+    return QEnumHelper::fromString<DoubleClickBehavior>(result, DoubleClickBehavior::Ignore);
 }
 
 Settings::MouseWheelBehavior Settings::mouseWheelBehavior() const

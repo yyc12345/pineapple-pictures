@@ -18,7 +18,7 @@ NavigatorView::NavigatorView(QWidget *parent)
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setStyleSheet("background-color: rgba(0, 0, 0, 120);"
-                  "border-radius: 3px;");
+                  "border-style: none;");
 }
 
 // doesn't take or manage its ownership
