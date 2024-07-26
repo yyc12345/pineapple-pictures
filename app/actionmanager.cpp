@@ -48,22 +48,21 @@ void ActionManager::setupAction(MainWindow *mainWindow)
     };
     #define CREATE_NEW_ICON_ACTION(w, a, i) create_action(w, &a, ICON_NAME(i), ACTION_NAME(a))
     CREATE_NEW_ICON_ACTION(mainWindow, actionActualSize, zoom-original);
-    CREATE_NEW_ICON_ACTION(mainWindow, actionToggleMaximize, view-fullscreen);
+    CREATE_NEW_ICON_ACTION(mainWindow, actionFitInView, fit-in-view);
+    CREATE_NEW_ICON_ACTION(mainWindow, actionHorizontalFlip, horizontal-flip);
     CREATE_NEW_ICON_ACTION(mainWindow, actionZoomIn, zoom-in);
     CREATE_NEW_ICON_ACTION(mainWindow, actionZoomOut, zoom-out);
     CREATE_NEW_ICON_ACTION(mainWindow, actionToggleCheckerboard, view-background-checkerboard);
     CREATE_NEW_ICON_ACTION(mainWindow, actionRotateClockwise, object-rotate-right);
+    CREATE_NEW_ICON_ACTION(mainWindow, actionRotateCounterClockwise, object-rotate-left);
+    CREATE_NEW_ICON_ACTION(mainWindow, actionPrevPicture, go-previous);
+    CREATE_NEW_ICON_ACTION(mainWindow, actionNextPicture, go-next);
     #undef CREATE_NEW_ICON_ACTION
 
     #define CREATE_NEW_ACTION(w, a) create_action(w, &a, QString(), ACTION_NAME(a))
     #define CREATE_NEW_THEMEICON_ACTION(w, a, i) create_action(w, &a, QLatin1String(STRIFY(i)), ACTION_NAME(a), true)
-    CREATE_NEW_ACTION(mainWindow, actionRotateCounterClockwise);
-    CREATE_NEW_ACTION(mainWindow, actionPrevPicture);
-    CREATE_NEW_ACTION(mainWindow, actionNextPicture);
-
+    CREATE_NEW_ACTION(mainWindow, actionToggleMaximize);
     CREATE_NEW_THEMEICON_ACTION(mainWindow, actionOpen, document-open);
-    CREATE_NEW_ACTION(mainWindow, actionHorizontalFlip);
-    CREATE_NEW_ACTION(mainWindow, actionFitInView);
     CREATE_NEW_ACTION(mainWindow, actionFitByWidth);
     CREATE_NEW_THEMEICON_ACTION(mainWindow, actionCopyPixmap, edit-copy);
     CREATE_NEW_ACTION(mainWindow, actionCopyFilePath);
@@ -155,3 +154,8 @@ void ActionManager::setupShortcuts()
     });
 }
 
+void ActionManager::setPrevNextPictureActionEnabled(bool enabled)
+{
+    actionPrevPicture->setEnabled(enabled);
+    actionNextPicture->setEnabled(enabled);
+}

@@ -5,7 +5,6 @@
 #include "mainwindow.h"
 
 #include "settings.h"
-#include "toolbutton.h"
 #include "bottombuttongroup.h"
 #include "graphicsview.h"
 #include "navigatorview.h"
@@ -52,26 +51,11 @@ MainWindow::MainWindow(QWidget *parent)
         this->setWindowFlag(Qt::WindowStaysOnTopHint);
     }
 
-    this->setAttribute(Qt::WA_TranslucentBackground, true);
-    this->setMinimumSize(350, 330);
+    this->setMinimumSize(600, 400);
     this->setWindowIcon(QIcon(":/icons/app-icon.svg"));
-    this->setMouseTracking(true);
     this->setAcceptDrops(true);
 
     m_pm->setAutoLoadFilterSuffixes(supportedImageFormats());
-
-    m_fadeOutAnimation = new QPropertyAnimation(this, "windowOpacity");
-    m_fadeOutAnimation->setDuration(300);
-    m_fadeOutAnimation->setStartValue(1);
-    m_fadeOutAnimation->setEndValue(0);
-    m_floatUpAnimation = new QPropertyAnimation(this, "geometry");
-    m_floatUpAnimation->setDuration(300);
-    m_floatUpAnimation->setEasingCurve(QEasingCurve::OutCirc);
-    m_exitAnimationGroup = new QParallelAnimationGroup(this);
-    m_exitAnimationGroup->addAnimation(m_fadeOutAnimation);
-    m_exitAnimationGroup->addAnimation(m_floatUpAnimation);
-    connect(m_exitAnimationGroup, &QParallelAnimationGroup::finished,
-            this, &QWidget::close);
 
     GraphicsScene * scene = new GraphicsScene(this);
 
@@ -80,7 +64,7 @@ MainWindow::MainWindow(QWidget *parent)
     this->setCentralWidget(m_graphicsView);
 
     m_gv = new NavigatorView(this);
-    m_gv->setFixedSize(220, 160);
+    m_gv->setFixedSize(82, 60);
     m_gv->setScene(scene);
     m_gv->setMainView(m_graphicsView);
     m_gv->fitInView(m_gv->sceneRect(), Qt::KeepAspectRatio);
@@ -96,48 +80,25 @@ MainWindow::MainWindow(QWidget *parent)
     connect(m_graphicsView, &GraphicsView::viewportRectChanged,
             m_gv, &NavigatorView::updateMainViewportRegion);
 
-    m_closeButton = new ToolButton(true, m_graphicsView);
-    m_closeButton->setIconSize(QSize(32, 32));
-    m_closeButton->setFixedSize(QSize(50, 50));
-    m_closeButton->setIconResourcePath(":/icons/window-close.svg");
-
-    connect(m_closeButton, &QAbstractButton::clicked,
-            this, &MainWindow::closeWindow);
-
-    m_prevButton = new ToolButton(false, m_graphicsView);
-    m_prevButton->setIconSize(QSize(75, 75));
-    m_prevButton->setIconResourcePath(":/icons/go-previous.svg");
-    m_prevButton->setVisible(false);
-    m_prevButton->setOpacity(0, false);
-    m_nextButton = new ToolButton(false, m_graphicsView);
-    m_nextButton->setIconSize(QSize(75, 75));
-    m_nextButton->setIconResourcePath(":/icons/go-next.svg");
-    m_nextButton->setVisible(false);
-    m_nextButton->setOpacity(0, false);
-
-    connect(m_prevButton, &QAbstractButton::clicked,
-            this, &MainWindow::galleryPrev);
-    connect(m_nextButton, &QAbstractButton::clicked,
-            this, &MainWindow::galleryNext);
-
     m_am->setupAction(this);
+    m_am->setPrevNextPictureActionEnabled(false);
 
     m_bottomButtonGroup = new BottomButtonGroup({
         m_am->actionActualSize,
-        m_am->actionToggleMaximize,
+        m_am->actionFitInView,
         m_am->actionZoomIn,
         m_am->actionZoomOut,
-        m_am->actionToggleCheckerboard,
-        m_am->actionRotateClockwise
+        m_am->actionPrevPicture,
+        m_am->actionNextPicture,
+        m_am->actionRotateCounterClockwise,
+        m_am->actionRotateClockwise,
+        m_am->actionHorizontalFlip,
+        m_am->actionToggleCheckerboard
     }, this);
-
-    m_bottomButtonGroup->setOpacity(0, false);
-    m_gv->setOpacity(0, false);
-    m_closeButton->setOpacity(0, false);
+    m_bottomButtonGroup->setFixedHeight(60);
 
     connect(m_pm, &PlaylistManager::totalCountChanged, this, [this](int galleryFileCount) {
-        m_prevButton->setVisible(galleryFileCount > 1);
-        m_nextButton->setVisible(galleryFileCount > 1);
+        m_am->setPrevNextPictureActionEnabled(galleryFileCount > 1);
     });
 
     connect(m_pm->model(), &PlaylistModel::modelReset, this, std::bind(&MainWindow::galleryCurrent, this, false, false));
@@ -153,12 +114,6 @@ MainWindow::MainWindow(QWidget *parent)
         m_am->setupShortcuts();
     });
 
-    // allow some mouse events can go through these widgets for resizing window.
-    installResizeCapture(m_closeButton);
-    installResizeCapture(m_graphicsView);
-    installResizeCapture(m_graphicsView->viewport());
-    installResizeCapture(m_gv);
-    installResizeCapture(m_gv->viewport());
 }
 
 MainWindow::~MainWindow()
@@ -283,75 +238,6 @@ void MainWindow::showEvent(QShowEvent *event)
     updateWidgetsPosition();
 
     return FramelessWindow::showEvent(event);
-}
-
-void MainWindow::enterEvent(QT_ENTER_EVENT *event)
-{
-    m_bottomButtonGroup->setOpacity(1);
-    m_gv->setOpacity(1);
-
-    m_closeButton->setOpacity(1);
-    m_prevButton->setOpacity(1);
-    m_nextButton->setOpacity(1);
-
-    return FramelessWindow::enterEvent(event);
-}
-
-void MainWindow::leaveEvent(QEvent *event)
-{
-    m_bottomButtonGroup->setOpacity(0);
-    m_gv->setOpacity(0);
-
-    m_closeButton->setOpacity(0);
-    m_prevButton->setOpacity(0);
-    m_nextButton->setOpacity(0);
-
-    return FramelessWindow::leaveEvent(event);
-}
-
-void MainWindow::mousePressEvent(QMouseEvent *event)
-{
-    if (event->buttons() & Qt::LeftButton && !isMaximized()) {
-        m_clickedOnWindow = true;
-        m_oldMousePos = event->pos();
-//        qDebug() << m_oldMousePos << m_graphicsView->transform().m11()
-//                 << m_graphicsView->transform().m22() << m_graphicsView->matrix().m12();
-        event->accept();
-    }
-
-    return FramelessWindow::mousePressEvent(event);
-}
-
-void MainWindow::mouseMoveEvent(QMouseEvent *event)
-{
-    if (event->buttons() & Qt::LeftButton && m_clickedOnWindow && !isMaximized() && !isFullScreen()) {
-        if (!window()->windowHandle()->startSystemMove()) {
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
-            move(event->globalPosition().toPoint() - m_oldMousePos);
-#else
-            move(event->globalPos() - m_oldMousePos);
-#endif // QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
-        }
-        event->accept();
-    }
-
-    return FramelessWindow::mouseMoveEvent(event);
-}
-
-void MainWindow::mouseReleaseEvent(QMouseEvent *event)
-{
-    m_clickedOnWindow = false;
-
-    // It seems the forward/back mouse button won't generate a key event [1] so we can't use
-    // QShortcut or QKeySequence to indicate these shortcuts, so we do it here.
-    // Reference:
-    // [1]: https://codereview.qt-project.org/c/qt/qtbase/+/177475
-    if (event->button() == Qt::ForwardButton || event->button() == Qt::BackButton) {
-        event->button() == Qt::BackButton ? galleryPrev() : galleryNext();
-        event->accept();
-    }
-
-    return FramelessWindow::mouseReleaseEvent(event);
 }
 
 void MainWindow::mouseDoubleClickEvent(QMouseEvent *event)
@@ -561,20 +447,12 @@ void MainWindow::centerWindow()
 
 void MainWindow::closeWindow()
 {
-    QRect windowRect(this->geometry());
-    m_floatUpAnimation->setStartValue(windowRect);
-    m_floatUpAnimation->setEndValue(windowRect.adjusted(0, -80, 0, 0));
-    m_floatUpAnimation->setStartValue(QRect(this->geometry().x(), this->geometry().y(), this->geometry().width(), this->geometry().height()));
-    m_floatUpAnimation->setEndValue(QRect(this->geometry().x(), this->geometry().y()-80, this->geometry().width(), this->geometry().height()));
-    m_exitAnimationGroup->start();
+    // YYC Mark: Exit animation is not supported in Remix fork.
+    this->close();
 }
 
 void MainWindow::updateWidgetsPosition()
 {
-    m_closeButton->move(width() - m_closeButton->width(), 0);
-    m_prevButton->move(25, (height() - m_prevButton->sizeHint().height()) / 2);
-    m_nextButton->move(width() - m_nextButton->sizeHint().width() - 25,
-                       (height() - m_prevButton->sizeHint().height()) / 2);
     m_bottomButtonGroup->move((width() - m_bottomButtonGroup->width()) / 2,
                               height() - m_bottomButtonGroup->height());
     m_gv->move(width() - m_gv->width(), height() - m_gv->height());
@@ -583,9 +461,7 @@ void MainWindow::updateWidgetsPosition()
 void MainWindow::toggleProtectedMode()
 {
     m_protectedMode = !m_protectedMode;
-    m_closeButton->setVisible(!m_protectedMode);
-    m_prevButton->setVisible(!m_protectedMode);
-    m_nextButton->setVisible(!m_protectedMode);
+    // YYC Mark: Protected mode is not supported in Remix fork.
 }
 
 void MainWindow::toggleStayOnTop()
@@ -624,7 +500,9 @@ bool MainWindow::canPaste() const
 
 void MainWindow::quitAppAction(bool force)
 {
-    if (!m_protectedMode || force) {
+    // YYC Mark: Protect mode is not supported in Remix fork
+    // Assume we are always in non-protected mode.
+    if (/*!m_protectedMode*/ true || force) {
         closeWindow();
     }
 }

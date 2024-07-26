@@ -109,7 +109,7 @@ void GraphicsScene::showText(const QString &text)
 {
     this->clear();
     QGraphicsTextItem * textItem = this->addText(text);
-    textItem->setDefaultTextColor(QColor("White"));
+    textItem->setDefaultTextColor(QColor("Black"));
     m_theThing = textItem;
     this->setSceneRect(m_theThing->boundingRect());
 }

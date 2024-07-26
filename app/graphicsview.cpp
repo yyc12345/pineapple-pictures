@@ -21,8 +21,7 @@ GraphicsView::GraphicsView(QWidget *parent)
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setResizeAnchor(QGraphicsView::AnchorUnderMouse);
     setTransformationAnchor(QGraphicsView::AnchorUnderMouse);
-    setStyleSheet("background-color: rgba(0, 0, 0, 220);"
-                  "border-radius: 3px;");
+    setStyleSheet("border-style: none;");
     setAcceptDrops(false);
     setCheckerboardEnabled(false);
 

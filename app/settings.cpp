@@ -44,14 +44,14 @@ Settings *Settings::instance()
 
 bool Settings::stayOnTop()
 {
-    return m_qsettings->value("stay_on_top", true).toBool();
+    return m_qsettings->value("stay_on_top", false).toBool();
 }
 
 Settings::DoubleClickBehavior Settings::doubleClickBehavior() const
 {
-    QString result = m_qsettings->value("double_click_behavior", "Close").toString();
+    QString result = m_qsettings->value("double_click_behavior", "Ignore").toString();
 
-    return QEnumHelper::fromString<DoubleClickBehavior>(result, DoubleClickBehavior::Close);
+    return QEnumHelper::fromString<DoubleClickBehavior>(result, DoubleClickBehavior::Ignore);
 }
 
 Settings::MouseWheelBehavior Settings::mouseWheelBehavior() const
@@ -63,9 +63,9 @@ Settings::MouseWheelBehavior Settings::mouseWheelBehavior() const
 
 Settings::WindowSizeBehavior Settings::initWindowSizeBehavior() const
 {
-    QString result = m_qsettings->value("init_window_size_behavior", "Auto").toString();
+    QString result = m_qsettings->value("init_window_size_behavior", "Maximized").toString();
 
-    return QEnumHelper::fromString<WindowSizeBehavior>(result, WindowSizeBehavior::Auto);
+    return QEnumHelper::fromString<WindowSizeBehavior>(result, WindowSizeBehavior::Maximized);
 }
 
 Qt::HighDpiScaleFactorRoundingPolicy Settings::hiDpiScaleFactorBehavior() const

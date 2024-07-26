@@ -21,11 +21,7 @@ BottomButtonGroup::BottomButtonGroup(const std::vector<QAction *> &actionList, Q
     this->setLayout(mainLayout);
     this->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
     this->setStyleSheet("BottomButtonGroup {"
-                        "border: 1px solid gray;"
-                        "border-top-left-radius: 10px;"
-                        "border-top-right-radius: 10px;"
                         "border-style: none;"
-                        "background-color:rgba(0,0,0,120)"
                         "}"
                         "QToolButton {"
                         "background:transparent;"
@@ -45,6 +41,7 @@ BottomButtonGroup::BottomButtonGroup(const std::vector<QAction *> &actionList, Q
     for (QAction * action : actionList) {
         addButton(newActionBtn(action));
     }
+
 }
 
 void BottomButtonGroup::setOpacity(qreal opacity, bool animated)
