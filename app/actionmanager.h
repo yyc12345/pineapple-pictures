@@ -18,6 +18,7 @@ public:
     void setupAction(MainWindow * mainWindow);
     void retranslateUi(MainWindow *MainWindow);
     void setupShortcuts();
+    void setPrevNextPictureActionEnabled(bool enabled);
 
     static QIcon loadHidpiIcon(const QString &resp, QSize sz = QSize(32, 32));
 

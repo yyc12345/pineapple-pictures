@@ -1,17 +1,1 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="100%" height="100%" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
-    <g transform="matrix(1,0,0,1,-74,-7.10543e-15)">
-        <g id="object-rotate-right" transform="matrix(1,0,0,1,74,7.10543e-15)">
-            <rect x="0" y="0" width="32" height="32" style="fill:none;"/>
-            <g transform="matrix(1,0,0,1,-1,-0.275147)">
-                <g transform="matrix(1,0,0,1,-74,-7.10543e-15)">
-                    <path d="M100,18C100,22.967 95.967,27 91,27C86.033,27 82,22.967 82,18C82,13.033 86.033,9 91,9" style="fill:none;stroke:white;stroke-width:2px;"/>
-                </g>
-                <g transform="matrix(0.984136,-0.177418,0.177418,0.984136,-74.2676,16.4198)">
-                    <path d="M89,13L93,9L89,5" style="fill:none;stroke:white;stroke-width:2px;"/>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>rotate-right</title><path d="M16.89,15.5L18.31,16.89C19.21,15.73 19.76,14.39 19.93,13H17.91C17.77,13.87 17.43,14.72 16.89,15.5M13,17.9V19.92C14.39,19.75 15.74,19.21 16.9,18.31L15.46,16.87C14.71,17.41 13.87,17.76 13,17.9M19.93,11C19.76,9.61 19.21,8.27 18.31,7.11L16.89,8.53C17.43,9.28 17.77,10.13 17.91,11M15.55,5.55L11,1V4.07C7.06,4.56 4,7.92 4,12C4,16.08 7.05,19.44 11,19.93V17.91C8.16,17.43 6,14.97 6,12C6,9.03 8.16,6.57 11,6.09V10L15.55,5.55Z" /></svg>
