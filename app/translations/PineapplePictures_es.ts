@@ -174,12 +174,20 @@
         <source>&amp;License</source>
         <translation>&amp;Licencia</translation>
     </message>
+    <message>
+        <source>%1 is built on the following free software libraries:</source>
+        <translation type="unfinished">%1 está construido sobre las bibliotecas de software libre siguientes:</translation>
+    </message>
+    <message>
+        <source>Copyright (c) %1 %2</source>
+        <translation type="unfinished">Copyright (c) %1 %2</translation>
+    </message>
 </context>
 <context>
     <name>GraphicsScene</name>
     <message>
-        <location filename="../graphicsscene.cpp" line="89"/>
-        <location filename="../mainwindow.cpp" line="296"/>
+        <location filename="../mainwindow.cpp" line="232"/>
+        <location filename="../graphicsscene.cpp" line="90"/>
         <source>Drag image here</source>
         <translation>Arrastre una imagen aquí</translation>
     </message>
@@ -187,28 +195,28 @@
 <context>
     <name>GraphicsView</name>
     <message>
-        <location filename="../graphicsview.cpp" line="351"/>
+        <location filename="../graphicsview.cpp" line="350"/>
         <source>File url list is empty</source>
         <translation>La lista de ubicaciones está vacía</translation>
     </message>
     <message>
-        <location filename="../graphicsview.cpp" line="52"/>
+        <location filename="../graphicsview.cpp" line="51"/>
         <source>File is not a valid image</source>
         <translation>El archivo no es una imagen válida</translation>
     </message>
     <message>
-        <location filename="../graphicsview.cpp" line="57"/>
-        <location filename="../graphicsview.cpp" line="62"/>
+        <location filename="../graphicsview.cpp" line="56"/>
+        <location filename="../graphicsview.cpp" line="61"/>
         <source>Image data is invalid or currently unsupported</source>
         <translation>Los datos de la imagen no son válidos o no son compatibles</translation>
     </message>
     <message>
-        <location filename="../graphicsview.cpp" line="359"/>
+        <location filename="../graphicsview.cpp" line="358"/>
         <source>Image data is invalid</source>
         <translation>Los datos de la imagen no son válidos</translation>
     </message>
     <message>
-        <location filename="../graphicsview.cpp" line="366"/>
+        <location filename="../graphicsview.cpp" line="365"/>
         <source>Not supported mimedata: %1</source>
         <translation>El tipo MIME no es compatible: %1</translation>
     </message>
@@ -216,55 +224,55 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="191"/>
+        <location filename="../mainwindow.cpp" line="140"/>
         <source>File url list is empty</source>
         <translation>La lista de ubicaciones está vacía</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="448"/>
+        <location filename="../mainwindow.cpp" line="315"/>
         <source>&amp;Copy</source>
         <translation>&amp;Copiar</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="737"/>
+        <location filename="../mainwindow.cpp" line="593"/>
         <source>Are you sure you want to move &quot;%1&quot; to recycle bin?</source>
         <translation>¿Estás seguro de que quieres mover &quot;%1&quot; a la papelera de reciclaje?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="742"/>
+        <location filename="../mainwindow.cpp" line="598"/>
         <source>Move to trash failed, it might caused by file permission issue, file system limitation, or platform limitation.</source>
         <translation>Mover a la papelera ha fallado, puede deberse a un problema con los permisos de los archivos, una limitación del sistema de archivos o una limitación de la plataforma.</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="106"/>
+        <location filename="../actionmanager.cpp" line="107"/>
         <source>Copy P&amp;ixmap</source>
         <translation>Copiar &amp;mapa de píxeles</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="107"/>
+        <location filename="../actionmanager.cpp" line="108"/>
         <source>Copy &amp;File Path</source>
         <translation>Copiar &amp;ruta de archivo</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="125"/>
+        <location filename="../actionmanager.cpp" line="126"/>
         <source>Properties</source>
         <translation>Propiedades</translation>
     </message>
     <message>
+        <location filename="../actionmanager.cpp" line="111"/>
         <location filename="../aboutdialog.cpp" line="39"/>
-        <location filename="../actionmanager.cpp" line="110"/>
         <source>Stay on top</source>
         <translation>Mantener encima</translation>
     </message>
     <message>
+        <location filename="../actionmanager.cpp" line="112"/>
         <location filename="../aboutdialog.cpp" line="42"/>
-        <location filename="../actionmanager.cpp" line="111"/>
         <source>Protected mode</source>
         <translation>Modo protegido</translation>
     </message>
     <message>
+        <location filename="../actionmanager.cpp" line="113"/>
         <location filename="../aboutdialog.cpp" line="45"/>
-        <location filename="../actionmanager.cpp" line="112"/>
         <source>Keep transformation</source>
         <comment>The &apos;transformation&apos; means the flip/rotation status that currently applied to the image view</comment>
         <translation>Conservar la transformación</translation>
@@ -280,12 +288,12 @@
         <translation>Reducir</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="103"/>
+        <location filename="../actionmanager.cpp" line="104"/>
         <source>Flip &amp;Horizontally</source>
         <translation>Voltear &amp;horizontalmente</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="108"/>
+        <location filename="../actionmanager.cpp" line="109"/>
         <source>&amp;Paste</source>
         <translation>&amp;Pegar</translation>
     </message>
@@ -315,46 +323,59 @@
         <translation>Girar a la derecha</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="100"/>
+        <location filename="../actionmanager.cpp" line="99"/>
+        <source>Rotate left</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="101"/>
         <source>Previous image</source>
         <translation>Imagen anterior</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="101"/>
+        <location filename="../actionmanager.cpp" line="102"/>
         <source>Next image</source>
         <translation>Imagen siguiente</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="109"/>
-        <location filename="../mainwindow.cpp" line="736"/>
+        <location filename="../mainwindow.cpp" line="592"/>
+        <location filename="../actionmanager.cpp" line="110"/>
         <source>Move to Trash</source>
         <translation>Mover a la papelera</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="113"/>
+        <location filename="../actionmanager.cpp" line="114"/>
         <source>Configure...</source>
         <translation>Configurar...</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="114"/>
+        <location filename="../actionmanager.cpp" line="115"/>
         <source>Help</source>
         <translation>Ayuda</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="117"/>
+        <location filename="../actionmanager.cpp" line="118"/>
         <source>Show in File Explorer</source>
         <comment>File Explorer is the name of explorer.exe under Windows</comment>
         <translation>Mostrar en el Explorador de archivos</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="123"/>
+        <location filename="../actionmanager.cpp" line="124"/>
         <source>Show in directory</source>
         <translation>Mostrar en la carpeta</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="126"/>
+        <location filename="../actionmanager.cpp" line="127"/>
         <source>Quit</source>
         <translation>Salir</translation>
+    </message>
+    <message>
+        <source>Show in File Explorer</source>
+        <translation type="unfinished">Mostrar en el Explorador de archivos</translation>
+    </message>
+    <message>
+        <source>Keep transformation</source>
+        <translation type="unfinished">Conservar la transformación</translation>
     </message>
 </context>
 <context>
@@ -679,6 +700,34 @@
         <source>Value</source>
         <translation>Valor</translation>
     </message>
+    <message>
+        <source>GPS</source>
+        <translation type="unfinished">GPS</translation>
+    </message>
+    <message>
+        <source>File</source>
+        <translation type="unfinished">Archivo</translation>
+    </message>
+    <message>
+        <source>Image</source>
+        <translation type="unfinished">Imagen</translation>
+    </message>
+    <message>
+        <source>Camera</source>
+        <translation type="unfinished">Cámara</translation>
+    </message>
+    <message>
+        <source>Origin</source>
+        <translation type="unfinished">Origen</translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation type="unfinished">Descripción</translation>
+    </message>
+    <message>
+        <source>Advanced photo</source>
+        <translation type="unfinished">Foto avanzada</translation>
+    </message>
 </context>
 <context>
     <name>SettingsDialog</name>
@@ -770,6 +819,22 @@
         <location filename="../settingsdialog.cpp" line="73"/>
         <source>HiDPI scale factor rounding policy</source>
         <translation>Política de redondeo del factor de escala HiDPI</translation>
+    </message>
+    <message>
+        <source>Round (Integer scaling)</source>
+        <translation type="unfinished">Redondeo (escala de enteros)</translation>
+    </message>
+    <message>
+        <source>Floor (Integer scaling)</source>
+        <translation type="unfinished">Floor (redondear enteros hacia abajo)</translation>
+    </message>
+    <message>
+        <source>Follow system (Fractional scaling)</source>
+        <translation type="unfinished">Redondeo (redondear los enteros)</translation>
+    </message>
+    <message>
+        <source>Ceil (Integer scaling)</source>
+        <translation type="unfinished">Ceil (redondear enteros hacia arriba)</translation>
     </message>
 </context>
 <context>

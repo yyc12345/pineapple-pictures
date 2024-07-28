@@ -170,12 +170,20 @@
         <source>&amp;License</source>
         <translation>라이선스(&amp;L)</translation>
     </message>
+    <message>
+        <source>%1 is built on the following free software libraries:</source>
+        <translation type="unfinished">%1은 다음과 같은 무료 소프트웨어 라이브러리를 기반으로 합니다:</translation>
+    </message>
+    <message>
+        <source>Copyright (c) %1 %2</source>
+        <translation type="unfinished">저작권 (c) %1 %2</translation>
+    </message>
 </context>
 <context>
     <name>GraphicsScene</name>
     <message>
-        <location filename="../graphicsscene.cpp" line="89"/>
-        <location filename="../mainwindow.cpp" line="296"/>
+        <location filename="../mainwindow.cpp" line="232"/>
+        <location filename="../graphicsscene.cpp" line="90"/>
         <source>Drag image here</source>
         <translation>이미지를 여기로 끌기</translation>
     </message>
@@ -183,28 +191,28 @@
 <context>
     <name>GraphicsView</name>
     <message>
-        <location filename="../graphicsview.cpp" line="351"/>
+        <location filename="../graphicsview.cpp" line="350"/>
         <source>File url list is empty</source>
         <translation>파일 URL 목록이 비어 있습니다</translation>
     </message>
     <message>
-        <location filename="../graphicsview.cpp" line="52"/>
+        <location filename="../graphicsview.cpp" line="51"/>
         <source>File is not a valid image</source>
         <translation>파일이 올바른 이미지가 아닙니다</translation>
     </message>
     <message>
-        <location filename="../graphicsview.cpp" line="57"/>
-        <location filename="../graphicsview.cpp" line="62"/>
+        <location filename="../graphicsview.cpp" line="56"/>
+        <location filename="../graphicsview.cpp" line="61"/>
         <source>Image data is invalid or currently unsupported</source>
         <translation>이미지 데이터가 잘못되었거나 현재 지원되지 않습니다</translation>
     </message>
     <message>
-        <location filename="../graphicsview.cpp" line="359"/>
+        <location filename="../graphicsview.cpp" line="358"/>
         <source>Image data is invalid</source>
         <translation>이미지 데이터가 잘못되었습니다</translation>
     </message>
     <message>
-        <location filename="../graphicsview.cpp" line="366"/>
+        <location filename="../graphicsview.cpp" line="365"/>
         <source>Not supported mimedata: %1</source>
         <translation>지원되지 않는 mimedata: %1</translation>
     </message>
@@ -212,55 +220,55 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="191"/>
+        <location filename="../mainwindow.cpp" line="140"/>
         <source>File url list is empty</source>
         <translation>파일 URL 목록이 비어 있습니다</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="448"/>
+        <location filename="../mainwindow.cpp" line="315"/>
         <source>&amp;Copy</source>
         <translation>복사(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="737"/>
+        <location filename="../mainwindow.cpp" line="593"/>
         <source>Are you sure you want to move &quot;%1&quot; to recycle bin?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="742"/>
+        <location filename="../mainwindow.cpp" line="598"/>
         <source>Move to trash failed, it might caused by file permission issue, file system limitation, or platform limitation.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="106"/>
+        <location filename="../actionmanager.cpp" line="107"/>
         <source>Copy P&amp;ixmap</source>
         <translation>Pixmap 복사(&amp;I)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="107"/>
+        <location filename="../actionmanager.cpp" line="108"/>
         <source>Copy &amp;File Path</source>
         <translation>파일 경로 복사(&amp;F)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="125"/>
+        <location filename="../actionmanager.cpp" line="126"/>
         <source>Properties</source>
         <translation>속성</translation>
     </message>
     <message>
+        <location filename="../actionmanager.cpp" line="111"/>
         <location filename="../aboutdialog.cpp" line="39"/>
-        <location filename="../actionmanager.cpp" line="110"/>
         <source>Stay on top</source>
         <translation>맨 위에 유지</translation>
     </message>
     <message>
+        <location filename="../actionmanager.cpp" line="112"/>
         <location filename="../aboutdialog.cpp" line="42"/>
-        <location filename="../actionmanager.cpp" line="111"/>
         <source>Protected mode</source>
         <translation>보호 모드</translation>
     </message>
     <message>
+        <location filename="../actionmanager.cpp" line="113"/>
         <location filename="../aboutdialog.cpp" line="45"/>
-        <location filename="../actionmanager.cpp" line="112"/>
         <source>Keep transformation</source>
         <comment>The &apos;transformation&apos; means the flip/rotation status that currently applied to the image view</comment>
         <translation type="unfinished"></translation>
@@ -276,12 +284,12 @@
         <translation>축소</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="103"/>
+        <location filename="../actionmanager.cpp" line="104"/>
         <source>Flip &amp;Horizontally</source>
         <translation>수평으로 뒤집기(&amp;H)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="108"/>
+        <location filename="../actionmanager.cpp" line="109"/>
         <source>&amp;Paste</source>
         <translation>붙여넣기(&amp;P)</translation>
     </message>
@@ -311,46 +319,59 @@
         <translation>오른쪽으로 회전</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="100"/>
+        <location filename="../actionmanager.cpp" line="99"/>
+        <source>Rotate left</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="101"/>
         <source>Previous image</source>
         <translation>이전 이미지</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="101"/>
+        <location filename="../actionmanager.cpp" line="102"/>
         <source>Next image</source>
         <translation>다음 이미지</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="109"/>
-        <location filename="../mainwindow.cpp" line="736"/>
+        <location filename="../mainwindow.cpp" line="592"/>
+        <location filename="../actionmanager.cpp" line="110"/>
         <source>Move to Trash</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="113"/>
+        <location filename="../actionmanager.cpp" line="114"/>
         <source>Configure...</source>
         <translation>구성...</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="114"/>
+        <location filename="../actionmanager.cpp" line="115"/>
         <source>Help</source>
         <translation>도움말</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="117"/>
+        <location filename="../actionmanager.cpp" line="118"/>
         <source>Show in File Explorer</source>
         <comment>File Explorer is the name of explorer.exe under Windows</comment>
         <translation>파일 탐색기에 표시</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="123"/>
+        <location filename="../actionmanager.cpp" line="124"/>
         <source>Show in directory</source>
         <translation>디렉터리에 표시</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="126"/>
+        <location filename="../actionmanager.cpp" line="127"/>
         <source>Quit</source>
         <translation>종료</translation>
+    </message>
+    <message>
+        <source>Show in File Explorer</source>
+        <translation type="unfinished">파일 탐색기에 표시</translation>
+    </message>
+    <message>
+        <source>Keep transformation</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -675,6 +696,34 @@
         <source>Value</source>
         <translation>값</translation>
     </message>
+    <message>
+        <source>GPS</source>
+        <translation type="unfinished">GPS</translation>
+    </message>
+    <message>
+        <source>File</source>
+        <translation type="unfinished">파일</translation>
+    </message>
+    <message>
+        <source>Image</source>
+        <translation type="unfinished">이미지</translation>
+    </message>
+    <message>
+        <source>Camera</source>
+        <translation type="unfinished">카메라</translation>
+    </message>
+    <message>
+        <source>Origin</source>
+        <translation type="unfinished">기원</translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation type="unfinished">설명</translation>
+    </message>
+    <message>
+        <source>Advanced photo</source>
+        <translation type="unfinished">고급 사진</translation>
+    </message>
 </context>
 <context>
     <name>SettingsDialog</name>
@@ -766,6 +815,22 @@
         <location filename="../settingsdialog.cpp" line="73"/>
         <source>HiDPI scale factor rounding policy</source>
         <translation>HiDPI 배율 반올림 정책</translation>
+    </message>
+    <message>
+        <source>Round (Integer scaling)</source>
+        <translation type="unfinished">라운드 (정수 스케일링)</translation>
+    </message>
+    <message>
+        <source>Floor (Integer scaling)</source>
+        <translation type="unfinished">바닥 (정수 스케일링)</translation>
+    </message>
+    <message>
+        <source>Follow system (Fractional scaling)</source>
+        <translation type="unfinished">팔로우 시스템 (부분 스케일링)</translation>
+    </message>
+    <message>
+        <source>Ceil (Integer scaling)</source>
+        <translation type="unfinished">셰일 (정수 스케일링)</translation>
     </message>
 </context>
 <context>
