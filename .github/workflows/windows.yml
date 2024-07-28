@@ -1,41 +1,45 @@
 name: Windows CI
 
-on: [push, pull_request]
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - remix
 
 jobs:
-  msvc-qmake-build:
+  # msvc-qmake-build:
   
-    strategy:
-      matrix:
-        vs: ['2022']
-        msvc_arch: ['x64']
-        qt_ver: ['6.7.2']
+  #   strategy:
+  #     matrix:
+  #       vs: ['2022']
+  #       msvc_arch: ['x64']
+  #       qt_ver: ['6.7.2']
 
-    runs-on: windows-2022
+  #   runs-on: windows-2022
 
-    steps:
-    - uses: actions/checkout@v4
-    - name: Install Qt
-      uses: jurplel/install-qt-action@v4
-      with:
-        arch: 'win64_msvc2019_64'
-        version: ${{ matrix.qt_ver }}
-        modules: 'qtimageformats'
-    - name: Build
-      shell: cmd
-      run: |
-        set VS=${{ matrix.vs }}
-        set VCVARS="C:\Program Files (x86)\Microsoft Visual Studio\%VS%\Enterprise\VC\Auxiliary\Build\vcvarsall.bat"
-        if not exist %VCVARS% set VCVARS="C:\Program Files\Microsoft Visual Studio\%VS%\Enterprise\VC\Auxiliary\Build\vcvarsall.bat"
-        call %VCVARS% ${{ matrix.msvc_arch }}
-        qmake pineapple-pictures.pro
-        nmake
-        nmake clean
-        windeployqt --verbose=2 --no-quick-import --no-translations --no-opengl-sw --no-system-d3d-compiler --no-system-dxc-compiler --skip-plugin-types tls,networkinformation release\ppic.exe
-    - uses: actions/upload-artifact@v4
-      with:
-        name: "windows-msvc${{ matrix.vs }}-qt${{ matrix.qt_ver }}-qmake-package"
-        path: release/*
+  #   steps:
+  #   - uses: actions/checkout@v4
+  #   - name: Install Qt
+  #     uses: jurplel/install-qt-action@v4
+  #     with:
+  #       arch: 'win64_msvc2019_64'
+  #       version: ${{ matrix.qt_ver }}
+  #       modules: 'qtimageformats'
+  #   - name: Build
+  #     shell: cmd
+  #     run: |
+  #       set VS=${{ matrix.vs }}
+  #       set VCVARS="C:\Program Files (x86)\Microsoft Visual Studio\%VS%\Enterprise\VC\Auxiliary\Build\vcvarsall.bat"
+  #       if not exist %VCVARS% set VCVARS="C:\Program Files\Microsoft Visual Studio\%VS%\Enterprise\VC\Auxiliary\Build\vcvarsall.bat"
+  #       call %VCVARS% ${{ matrix.msvc_arch }}
+  #       qmake pineapple-pictures.pro
+  #       nmake
+  #       nmake clean
+  #       windeployqt --verbose=2 --no-quick-import --no-translations --no-opengl-sw --no-system-d3d-compiler --no-system-dxc-compiler --skip-plugin-types tls,networkinformation release\ppic.exe
+  #   - uses: actions/upload-artifact@v4
+  #     with:
+  #       name: "windows-msvc${{ matrix.vs }}-qt${{ matrix.qt_ver }}-qmake-package"
+  #       path: release/*
 
   msvc-cmake-build:
   
