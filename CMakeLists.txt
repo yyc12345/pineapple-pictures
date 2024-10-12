@@ -217,6 +217,11 @@ if (WIN32)
     set_target_properties(${EXE_NAME} PROPERTIES
         WIN32_EXECUTABLE TRUE
     )
+    configure_file(
+        ${CMAKE_CURRENT_LIST_DIR}/dist/ppic.iss.in
+        ${CMAKE_CURRENT_BINARY_DIR}/dist/ppic.iss
+        @ONLY
+    )
 elseif (APPLE)
     set_source_files_properties(assets/icons/app-icon.icns PROPERTIES
         MACOSX_PACKAGE_LOCATION "Resources"
